@@ -15,11 +15,19 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	function showTabContent(i) {
+	function showTabContent(i = 0) {
 		tabsContent[i].style.display = 'block';
 		tabs[i].classList.add('tabheader__item_active');
 	}
 
 	hideTabContent();
-	showTabContent(0);
+	showTabContent();
+
+	tabsParent.addEventListener('click', event => {
+		const target = event.target;
+
+		if (target && target.classList.contains('tabheader__item')) {
+
+		}
+	});
 });
