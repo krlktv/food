@@ -220,10 +220,22 @@ window.addEventListener('DOMContentLoaded', () => {
 	};
 
 	forms.forEach(item => {
-		postData(item);
+		bindPostData(item);
 	});
 
-	function postData(form) {
+	const postData = async (url, data) => {
+		const res = await fetch(url, {
+			method: "POST",
+			headers: {
+				'Cotent-type': 'application/json'
+			},
+			body: data
+		});
+
+		return await res.json();
+	};
+
+	function bindPostData(form) {
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
 
@@ -242,13 +254,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				object[key] = value;
 			});
 
-			fetch('server.php', {
-					method: "POST",
-					headers: {
-						'Cotent-type': 'application/json'
-					},
-					body: JSON.stringify(object)
-				})
+			postData('server.php', JSON.stringify(object))
 				.then(data => data.text())
 				.then(data => {
 					console.log(data);
@@ -285,7 +291,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}, 4000);
 	}
 
-	fetch('db.json')
+	fetch('http://localhost:3000/menu')
 		.then(data => data.json())
 		.then(res => console.log(res));
 });
