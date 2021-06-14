@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// Timer
 
-	const deadline = '2021-05-30';
+	const deadline = '2021-09-25';
 
 	function getTimeRemaining(endtime) {
 		const t = Date.parse(endtime) - Date.parse(new Date()),
