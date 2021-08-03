@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// Timer
 
-	const deadline = '2021-09-25';
+	const deadline = '2021-09-19';
 
 	function getTimeRemaining(endtime) {
 		const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -95,7 +95,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	setClock('.timer', deadline);
 
 	// Modal
-
 
 	const modalTrigger = document.querySelectorAll('[data-modal]'),
 		modal = document.querySelector('.modal');
@@ -379,7 +378,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	next.addEventListener('click', () => {
-		if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) {
+		if (offset == +width.replace(/\D/g, '') * (slides.length - 1)) {
 			offset = 0;
 		} else {
 			offset += +width.slice(0, width.length - 2);
